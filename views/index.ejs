@@ -8,6 +8,7 @@
   <title>Upstore</title>
 
   <link rel="stylesheet" href="./styles.css">
+  <script src="./scripts/formValidation.js"></script>
 </head>
 
 <body class="h-screen w-screen random-bg transition-all bg-black">
@@ -16,14 +17,24 @@
       <!-- brand name  -->
       <h1 class="text-gray-200 text-6xl font-mono cursor-default">upstore</h1>
       <!-- login form -->
-      <form class="flex gap-2 flex-col justify-center bg-transparent mt-10 ">
+      <form novalidate onsubmit="return validateForm()" autocomplete="off" class="flex gap-2 flex-col justify-center bg-transparent mt-10 ">
         <% if(signUp == true) { %>
-        <input type="text" placeholder="Your name" class="form-input">
+        <input type="text" id="name" placeholder="Your name" class="form-input">
+        <h2 id="errorName" class="form-error hidden"></h2>
         <% } %>
-        <input type="email" placeholder="Enter your email" class="form-input">
-        <input type="password" placeholder="Enter your password" class="form-input">
+        <input type="email" id="email" placeholder="Enter your email" class="form-input">
+        <h2 id="errorEmail" class="form-error hidden"></h2>
         <% if(signUp == true) { %>
-        <input type="password" placeholder="Confirm password" class="form-input">
+        <input type="password" id="password" placeholder="Create a password" class="form-input">
+        <h2 id="errorPassword" class="form-error hidden"></h2>
+        <% } else { %>
+        <input type="password" id="password" placeholder="Enter password" class="form-input">
+        <h2 id="errorPassword" class="form-error hidden"></h2>
+        <%}%>
+
+        <% if(signUp == true) { %>
+        <input type="password" id="confirmPassword" placeholder="Confirm password" class="form-input">
+        <h2 id="errorConfirmPassword" class="form-error hidden"></h2>
         <% } %>
         <input type="submit" placeholder="Submit" class="bg-gray-600 text-white p-3 rounded-md hover:bg-gray-200 hover:text-black  transition-all cursor-pointer">
       </form>

@@ -12,3 +12,7 @@
 .form-input {
   @apply bg-transparent border-2 border-gray-600 p-3 rounded-md text-white;
 }
+
+.form-error {
+  @apply text-xs text-red-500 ml-3;
+}
