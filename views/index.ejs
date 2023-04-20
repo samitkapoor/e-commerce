@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upstore</title>
+
+  <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body class="h-screen w-screen random-bg transition-all bg-black">
+  <div class="h-screen w-screen bg-gradient-to-r from-black to-transparent  pl-10">
+    <div class="h-full w-[300px] flex flex-col justify-center ">
+      <!-- brand name  -->
+      <h1 class="text-gray-200 text-6xl font-mono cursor-default">upstore</h1>
+      <!-- login form -->
+      <form class="flex gap-2 flex-col justify-center bg-transparent mt-10 ">
+        <% if(signUp == true) { %>
+        <input type="text" placeholder="Your name" class="form-input">
+        <% } %>
+        <input type="email" placeholder="Enter your email" class="form-input">
+        <input type="password" placeholder="Enter your password" class="form-input">
+        <% if(signUp == true) { %>
+        <input type="password" placeholder="Confirm password" class="form-input">
+        <% } %>
+        <input type="submit" placeholder="Submit" class="bg-gray-600 text-white p-3 rounded-md hover:bg-gray-200 hover:text-black  transition-all cursor-pointer">
+      </form>
+      <!-- go to sign up page -->
+      <% if(signUp == true) { %>
+      <a href="/" class="text-gray-200 mt-2 cursor-pointer underline ">Already have an account</a>
+      <% } else { %>
+      <a href="/sign-up" class="text-gray-200 mt-2 cursor-pointer underline ">Create an account</a>
+      <% } %>
+    </div>
+  </div>
+</body>
+
+</html>

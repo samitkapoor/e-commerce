@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* generates a random background everytime the page is loaded */
+.random-bg {
+  /* lorem picsum api */
+  background-image: url("https://picsum.photos/1920/1080?grayscale");
+  position: center center;
+}
+
+.form-input {
+  @apply bg-transparent border-2 border-gray-600 p-3 rounded-md text-white;
+}

@@ -1,0 +1,20 @@
+{
+  "name": "upstore",
+  "version": "1.0.0",
+  "description": "upstore is an e-commerce website",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "build-css": "tailwindcss -i src/styles.css -o public/styles.css --watch"
+  },
+  "author": "Samit Kapoor",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "tailwindcss": "^3.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
