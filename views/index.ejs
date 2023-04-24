@@ -17,7 +17,7 @@
       <!-- brand name  -->
       <h1 class="text-gray-200 text-6xl font-mono cursor-default">upstore</h1>
       <!-- login form -->
-      <form novalidate onsubmit="return validateForm()" autocomplete="off" class="flex gap-2 flex-col justify-center bg-transparent mt-10 ">
+      <form novalidate method="GET" action="/shop" onsubmit="return validateForm()" autocomplete="off" class="flex gap-2 flex-col justify-center bg-transparent mt-10 ">
         <% if(signUp == true) { %>
         <input type="text" id="name" placeholder="Your name" class="form-input">
         <h2 id="errorName" class="form-error hidden"></h2>
