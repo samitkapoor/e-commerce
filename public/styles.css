@@ -536,10 +536,6 @@ video {
   display: none;
 }
 
-.h-\[2000px\] {
-  height: 2000px;
-}
-
 .h-full {
   height: 100%;
 }
@@ -640,11 +636,6 @@ video {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
-.text-4xl {
-  font-size: 2.25rem;
-  line-height: 2.5rem;
-}
-
 .text-6xl {
   font-size: 3.75rem;
   line-height: 1;
@@ -712,9 +703,18 @@ video {
 
 .nav-items {
   cursor: pointer;
+  font-size: 0.75rem;
+  line-height: 1rem;
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 200ms;
+}
+
+@media (min-width: 768px) {
+  .nav-items {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
 }
 
 /* the class that is added to nav bar when scroll happens */
@@ -747,6 +747,17 @@ video {
   color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
+@media (min-width: 640px) {
+  .sm\:block {
+    display: block;
+  }
+
+  .sm\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
+
 @media (min-width: 768px) {
   .md\:w-\[300px\] {
     width: 300px;
@@ -775,5 +786,10 @@ video {
 
   .md\:pl-10 {
     padding-left: 2.5rem;
+  }
+
+  .md\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
   }
 }
