@@ -8,13 +8,40 @@
   <title>Shop</title>
 
   <link rel="stylesheet" href="./styles.css">
+  <script src="./scripts/navBar.js" defer></script>
 </head>
 
 <!-- the image background -->
 
-<body class="h-screen w-screen random-bg">
+<body class="h-screen w-screen random-bg overflow-hidden relative">
   <!-- the content on the screen and also to dim the background image -->
-  <div class="h-screen w-screen bg-[#00000094]"></div>
+  <div class="h-screen w-screen bg-[#000000a6] flex flex-col">
+    <!-- the navigation bar -->
+    <header id="nav-bar" class="px-10 py-3 flex justify-between items-center transition-all">
+      <h1 class="text-white text-4xl cursor-default">upstore</h1>
+      <ul class="flex gap-4">
+        <a class="nav-item" href="">
+          <i class="fa-solid fa-heart nav-items"></i>
+          <li class="nav-items">Wishlist</li>
+        </a>
+        <a class="nav-item" href="">
+          <i class="fa-solid fa-cart-shopping  nav-items"></i>
+          <li class="nav-items">Cart</li>
+        </a>
+        <a class="nav-item" href="">
+          <i class="fa-solid fa-user  nav-items"></i>
+          <li class="nav-items">Profile</li>
+        </a>
+      </ul>
+    </header>
+    <!-- the products -->
+    <div id="content" class="scroll-bar overflow-y-scroll relative">
+      <div class="w-full"></div>
+    </div>
+  </div>
+
+  <script src="https://kit.fontawesome.com/885853d9e4.js" crossorigin="anonymous"></script>
+
 </body>
 
 </html>

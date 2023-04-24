@@ -16,3 +16,24 @@
 .form-error {
   @apply text-xs text-red-500 ml-3;
 }
+
+.nav-item {
+  @apply flex items-center gap-2 text-white hover:text-gray-400;
+}
+
+.nav-items {
+  @apply cursor-pointer transition-all duration-200;
+}
+
+/* the class that is added to nav bar when scroll happens */
+.stick {
+  @apply absolute top-0 left-0 right-0 bg-gray-600;
+}
+
+.scroll-bar::-webkit-scrollbar {
+  width: 2px;
+}
+
+.scroll-bar::-webkit-scrollbar-thumb {
+  @apply bg-gray-400;
+}
