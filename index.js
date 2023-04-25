@@ -1,6 +1,7 @@
 const path = require("path");
 const express = require("express");
 
+const mongoConnect = require("./util/database").mongoConnect;
 // login routes
 const loginRoutes = require("./routes/loginRoutes");
 // shop routes
@@ -16,6 +17,9 @@ app.use(shopRoutes);
 app.use(loginRoutes);
 
 const PORT = 3000 || process.env.PORT;
-app.listen(PORT, () => {
-  console.log(`Server running at ${PORT}`);
+
+mongoConnect(() => {
+  app.listen(PORT, () => {
+    console.log(`Server running at ${PORT}`);
+  });
 });
