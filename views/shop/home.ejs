@@ -17,7 +17,7 @@
   <!-- the content on the screen and also to dim the background image -->
   <div class="h-screen w-screen bg-[#000000a6] flex flex-col">
     <!-- the navigation bar -->
-    <header id="nav-bar" class="px-10 py-3 flex justify-between items-center transition-all">
+    <header id="nav-bar" class="px-10 pt-3 pb-4 flex justify-between items-center transition-all">
       <h1 class="text-white sm:text-2xl md:text-4xl cursor-default">upstore</h1>
       <ul class="flex gap-4">
         <a class="nav-item" href="">
@@ -36,7 +36,21 @@
     </header>
     <!-- the products -->
     <div id="content" class="scroll-bar overflow-y-scroll relative">
-      <div class="w-full"></div>
+      <div class="w-full flex gap-4 flex-wrap px-20 py-10">
+        <% products.forEach(product => { %>
+        <!-- each product -->
+        <div class="card w-48 flex flex-col bg-gray-200 cursor-pointer rounded-md overflow-hidden">
+          <!-- the image of the product -->
+          <img class="grayscale h-48 w-48 object-cover bg-white transition-all" src=<%= product.imageUrl%> alt="">
+          <!-- the name and price of the product -->
+          <div class="flex flex-col whitespace-nowrap p-2">
+            <h4 class="text-sm font-bold overflow-hidden"><%=product.companyName%></h4>
+            <h4 class="text-xs overflow-hidden"><%=product.name%></h4>
+            <h4 class="text-sm font-bold text-right price-text transition-all">&#8377;<%=product.price%></h4>
+          </div>
+        </div>
+        <% }); %>
+      </div>
     </div>
   </div>
 

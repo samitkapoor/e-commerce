@@ -27,7 +27,11 @@
 
 /* the class that is added to nav bar when scroll happens */
 .stick {
-  @apply absolute top-0 left-0 right-0 bg-gray-600;
+  @apply absolute top-0 left-0 right-0 bg-gray-50;
+}
+
+.stick * {
+  @apply text-black;
 }
 
 .scroll-bar::-webkit-scrollbar {
@@ -36,4 +40,19 @@
 
 .scroll-bar::-webkit-scrollbar-thumb {
   @apply bg-gray-400;
+}
+
+.card:hover .price-text {
+  @apply text-red-400;
+}
+
+.grayscale {
+  filter: gray;
+  -webkit-filter: grayscale(1);
+  filter: grayscale(1);
+}
+
+.card:hover .grayscale {
+  -webkit-filter: grayscale(0);
+  filter: none;
 }
