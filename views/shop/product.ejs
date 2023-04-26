@@ -12,17 +12,31 @@
 
 <body class="pagebg">
   <!-- the content on the screen and also to dim the background image -->
-  <div class="h-screen w-screen bg-[#000000a6] grid grid-cols-3">
-    <div class="h-screen col-span-1 flex items-center justify-center">
-      <img class="h-[300px] max-w-[350px] hover:h-[400px] border-[6px] hover:border-0 border-black object-contain -rotate-45 rounded-lg overflow-hidden hover:rotate-0 transition-all duration-[150ms] cursor-pointer" src="<%= product.imageUrl %>" alt="">
+  <div class="h-screen w-screen bg-[#000000a6] flex">
+    <div class="h-screen w-[800px] flex items-center justify-center">
+      <img class="h-[250px] max-w-[350px] hover:h-[400px] border-[6px] hover:border-0 border-black object-contain -rotate-45 rounded-lg overflow-hidden hover:rotate-0 transition-all duration-[150ms] cursor-pointer" src="<%= product.imageUrl %>" alt="">
     </div>
-    <div class="h-screen col-span-2 flex flex-col items-start justify-center text-white">
+    <div class="h-screen w-full flex flex-col items-start justify-center text-white box-border pr-36 cursor-default">
       <h4><%= product.companyName %></h4>
       <h1 class="font-bold text-5xl"><%= product.name %></h1>
       <h1 class="font-bold text-3xl">&#8377;<%= product.price %></h1>
-
+      <!-- add to wishlist, add to cart buttons -->
+      <div class="mt-5 flex gap-2 items-center justify-center">
+        <button class="bg-gray-400 hover:bg-green-500 transition-all duration-[200ms] py-3 px-6 rounded-md flex items-center justify-center gap-2">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <h4>Add to Cart</h4>
+        </button>
+        <button class="bg-red-400 hover:bg-yellow-500 transition-all duration-[200ms] py-3 px-6 rounded-md flex items-center justify-center gap-2">
+          <i class="fa-solid fa-heart"></i>
+          <h4>Add to Wishlist</h4>
+        </button>
+      </div>
+      <h4 class="font-semibold text-xl mt-10">Description</h4>
+      <h4 class="font-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus quidem magni cum facere ducimus deleniti veniam sed voluptas saepe. Sint mollitia similique suscipit. Magni quis mollitia ad tenetur? Amet aperiam deserunt fuga aliquam exercitationem modi, necessitatibus inventore totam neque cupiditate nemo reiciendis repellat quae consectetur fugit, blanditiis incidunt laborum earum!</h4>
     </div>
   </div>
+
+  <script src="https://kit.fontawesome.com/885853d9e4.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
