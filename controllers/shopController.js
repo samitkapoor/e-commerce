@@ -13,7 +13,17 @@ fetchProducts = async () => {
     .find()
     .toArray()
     .then((product) => {
-      products = product;
+      products = [];
+      product.forEach((prod) => {
+        var temp = new Product(
+          prod._id,
+          prod.companyName,
+          prod.name,
+          prod.imageUrl,
+          prod.price
+        );
+        products.push(temp);
+      });
     })
     .catch((err) => {
       console.log(err);
@@ -21,9 +31,15 @@ fetchProducts = async () => {
     });
 };
 
-module.exports.getHomePage = (req, res, next) => {
-  fetchProducts();
+module.exports.getHomePage = async (req, res, next) => {
+  await fetchProducts();
   // if login is successful
   res.render("shop/home.ejs", { products: products });
   // otherwise don't render the shop
+};
+
+module.exports.getProduct = (req, res, next) => {
+  console.log(req);
+
+  res.render("shop/product.ejs");
 };
