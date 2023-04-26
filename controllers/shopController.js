@@ -50,7 +50,5 @@ module.exports.getProduct = async (req, res, next) => {
 
   const product = await fetchProduct(prodId);
 
-  console.log(product);
-
   res.render("shop/product.ejs", { product: product });
 };

@@ -56,3 +56,7 @@
   -webkit-filter: grayscale(0);
   filter: none;
 }
+
+.pagebg {
+  @apply h-screen w-screen random-bg transition-all bg-black;
+}
