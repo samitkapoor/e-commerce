@@ -21,7 +21,6 @@ const mongoConnect = (callback = () => {}) => {
 const getDb = () => {
   if (_db) {
     console.log("Got the database");
-    console.log(_db);
     return _db;
   }
   throw "No database found!";

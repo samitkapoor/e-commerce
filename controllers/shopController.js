@@ -31,6 +31,12 @@ fetchProducts = async () => {
     });
 };
 
+fetchProduct = async (id) => {
+  const product = await products.find((element) => element.id == id);
+
+  return product;
+};
+
 module.exports.getHomePage = async (req, res, next) => {
   await fetchProducts();
   // if login is successful
@@ -38,8 +44,13 @@ module.exports.getHomePage = async (req, res, next) => {
   // otherwise don't render the shop
 };
 
-module.exports.getProduct = (req, res, next) => {
-  console.log(req);
+// this method will render the single product page and also fetch that product from the database
+module.exports.getProduct = async (req, res, next) => {
+  const prodId = req.url.split("/")[2];
 
-  res.render("shop/product.ejs");
+  const product = await fetchProduct(prodId);
+
+  console.log(product);
+
+  res.render("shop/product.ejs", { product: product });
 };
