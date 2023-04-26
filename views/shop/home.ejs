@@ -35,7 +35,7 @@
       </ul>
     </header>
     <!-- the products -->
-    <div id="content" class="scroll-bar overflow-y-scroll relative">
+    <div id="content" class="scroll-bar overflow-y-scroll relative z-0">
       <div class="w-full flex gap-4 flex-wrap px-20 py-10">
         <% products.forEach(product => { %>
         <!-- each product -->
@@ -49,7 +49,6 @@
             <h4 class="text-sm font-bold text-right price-text transition-all">&#8377;<%=product.price%></h4>
           </div>
         </div>
-
         <% }); %>
       </div>
     </div>

@@ -27,7 +27,7 @@
 
 /* the class that is added to nav bar when scroll happens */
 .stick {
-  @apply absolute top-0 left-0 right-0 bg-gray-50;
+  @apply absolute top-0 left-0 right-0 bg-gray-300 z-10;
 }
 
 .stick * {

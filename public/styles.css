@@ -520,6 +520,10 @@ video {
   position: relative;
 }
 
+.z-0 {
+  z-index: 0;
+}
+
 .mt-10 {
   margin-top: 2.5rem;
 }
@@ -644,24 +648,9 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-.bg-gray-300 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(209 213 219 / var(--tw-bg-opacity));
-}
-
 .object-contain {
   -o-object-fit: contain;
      object-fit: contain;
-}
-
-.object-cover {
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
-.object-fill {
-  -o-object-fit: fill;
-     object-fit: fill;
 }
 
 .p-2 {
@@ -810,8 +799,9 @@ video {
   top: 0px;
   left: 0px;
   right: 0px;
+  z-index: 10;
   --tw-bg-opacity: 1;
-  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+  background-color: rgb(209 213 219 / var(--tw-bg-opacity));
 }
 
 .stick * {
