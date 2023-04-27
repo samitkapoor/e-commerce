@@ -1,5 +1,8 @@
 const express = require("express");
 
+const getDb = require("../util/database").getDb;
+
+// /sign-up GET
 module.exports.getSignUpPage = (req, res, next) => {
   res.render("index.ejs", { signUp: true });
 };
@@ -7,4 +10,47 @@ module.exports.getSignUpPage = (req, res, next) => {
 // /
 module.exports.getLoginPage = (req, res, next) => {
   res.render("index.ejs", { signUp: false });
+};
+
+// /sign-up POST
+module.exports.signUp = async (req, res, next) => {
+  const name = req.body.name;
+  const email = req.body.email;
+  const password = req.body.password;
+
+  let db = getDb();
+
+  await db
+    .collection("users")
+    .insertOne({
+      name: name,
+      password: password,
+      email: email,
+    })
+    .then((response) => {
+      console.log(response);
+      res.redirect("/shop");
+    })
+    .catch((err) => {
+      alert(console.log("Error Occured, Please Try Again"));
+      res.redirect("/sign-up");
+    });
+};
+
+// /login POST
+module.exports.login = async (req, res, next) => {
+  const email = req.body.email;
+  const password = req.body.password;
+
+  let db = getDb();
+
+  const user = await db
+    .collection("users")
+    .findOne({ email: email, password: password });
+
+  if (user == null) {
+    res.redirect("/");
+  } else {
+    res.redirect("/shop");
+  }
 };

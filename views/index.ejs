@@ -17,27 +17,27 @@
       <!-- brand name  -->
       <h1 class="text-gray-200 text-6xl font-mono cursor-default">upstore</h1>
       <!-- login form -->
-      <form novalidate method="GET" action="/shop" onsubmit="return validateForm()" autocomplete="off" class="flex gap-2 flex-col justify-center bg-transparent mt-10 ">
-        <% if(signUp == true) { %>
-        <input type="text" id="name" placeholder="Your name" class="form-input">
+      <% if(signUp == true) { %>
+      <form novalidate method="POST" action="/sign-up" onsubmit="return validateForm()" autocomplete="off" class="flex gap-2 flex-col justify-center bg-transparent mt-10 ">
+        <input type="text" name="name" id="name" placeholder="Your name" class="form-input">
         <h2 id="errorName" class="form-error hidden"></h2>
-        <% } %>
-        <input type="email" id="email" placeholder="Enter your email" class="form-input">
+        <input type="email" name="email" id="email" placeholder="Enter your email" class="form-input">
         <h2 id="errorEmail" class="form-error hidden"></h2>
-        <% if(signUp == true) { %>
-        <input type="password" id="password" placeholder="Create a password" class="form-input">
+        <input type="password" name="password" id="password" placeholder="Create a password" class="form-input">
         <h2 id="errorPassword" class="form-error hidden"></h2>
-        <% } else { %>
-        <input type="password" id="password" placeholder="Enter password" class="form-input">
-        <h2 id="errorPassword" class="form-error hidden"></h2>
-        <%}%>
-
-        <% if(signUp == true) { %>
-        <input type="password" id="confirmPassword" placeholder="Confirm password" class="form-input">
+        <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm password" class="form-input">
         <h2 id="errorConfirmPassword" class="form-error hidden"></h2>
-        <% } %>
         <input type="submit" placeholder="Submit" class="bg-gray-600 text-white p-3 rounded-md hover:bg-gray-200 hover:text-black  transition-all cursor-pointer">
       </form>
+      <% } else { %>
+      <form novalidate method="POST" action="/login" onsubmit="return validateForm()" autocomplete="off" class="flex gap-2 flex-col justify-center bg-transparent mt-10 ">
+        <input type="email" name="email" id="email" placeholder="Enter your email" class="form-input">
+        <h2 id="errorEmail" class="form-error hidden"></h2>
+        <input type="password" name="password" id="password" placeholder="Enter password" class="form-input">
+        <h2 id="errorPassword" class="form-error hidden"></h2>
+        <input type="submit" placeholder="Submit" class="bg-gray-600 text-white p-3 rounded-md hover:bg-gray-200 hover:text-black  transition-all cursor-pointer">
+      </form>
+      <% } %>
       <!-- go to sign up page -->
       <% if(signUp == true) { %>
       <a href="/" class="text-gray-200 mt-2 cursor-pointer underline ">Already have an account</a>

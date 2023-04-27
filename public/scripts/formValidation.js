@@ -39,15 +39,15 @@ var validateForm = () => {
     if (password.value.length == 0) {
       showError(errorPassword, "Create a new password");
       return false;
-    } else if (password.value.length <= 6) {
-      showError(errorPassword, "Password should be of length more than 6");
+    } else if (password.value.length < 6) {
+      showError(errorPassword, "Password should be of length 6 atleast");
       return false;
     } else {
       hideError(errorPassword);
     }
 
     if (confirmPassword.value != password.value) {
-      showError(confirmPassword, "Passwords do not match");
+      showError(errorConfirmPassword, "Passwords do not match");
       return false;
     } else {
       hideError(errorConfirmPassword);
@@ -68,7 +68,7 @@ var validateForm = () => {
     if (password.value.length == 0) {
       showError(errorPassword, "Password can't be empty");
       return false;
-    } else if (password.value.length <= 6) {
+    } else if (password.value.length < 6) {
       showError(errorPassword, "Incorrect Password");
       return false;
     } else {
