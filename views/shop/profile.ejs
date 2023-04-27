@@ -13,12 +13,12 @@
   <div class="h-screen w-screen bg-[#000000a6] flex flex-col">
     <!-- the navigation bar -->
     <%- include("../components/navBar.ejs"); %>
-    <div class="h-full w-screen grid grid-cols-2">
+    <div class="h-full w-screen flex flex-col items-center justify-start md:items-start md:justify-start md:grid md:grid-cols-2">
       <div class="col-span-1 flex justify-end">
-        <img src="<%=profilePictureUrl%>" class="mt-24 mr-10 h-32 w-32 object-contain" />
+        <img src="<%=profilePictureUrl%>" class="mt-10 md:mt-24 md:mr-10 h-32 w-32 object-contain" />
       </div>
       <div class="col-span-1">
-        <h4 class="mt-16 profile-label">Name:</h4>
+        <h4 class="mt-4 md:mt-16 profile-label">Name:</h4>
         <h3 class="profile-value"><%= user.name  %></h3>
         <h4 class="profile-label">Email:</h4>
         <h3 class="profile-value"><%= user.email  %></h3>
