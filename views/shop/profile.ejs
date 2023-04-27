@@ -13,9 +13,21 @@
   <div class="h-screen w-screen bg-[#000000a6] flex flex-col">
     <!-- the navigation bar -->
     <%- include("../components/navBar.ejs"); %>
+    <div class="h-full w-screen grid grid-cols-2">
+      <div class="col-span-1 flex justify-end">
+        <img src="<%=profilePictureUrl%>" class="mt-24 mr-10 h-32 w-32 object-contain" />
+      </div>
+      <div class="col-span-1">
+        <h4 class="mt-16 profile-label">Name:</h4>
+        <h3 class="profile-value"><%= user.name  %></h3>
+        <h4 class="profile-label">Email:</h4>
+        <h3 class="profile-value"><%= user.email  %></h3>
+        <h4 class="profile-label">Address:</h4>
+        <h3 class="profile-value">4297 Coal Street Houtzdale<br>Pennsylvania, 16651<br>USA</h3>
+      </div>
+    </div>
   </div>
   <script src="https://kit.fontawesome.com/885853d9e4.js" crossorigin="anonymous"></script>
-
 </body>
 
 </html>

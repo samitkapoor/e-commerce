@@ -8,5 +8,8 @@ module.exports.logInUser = (name, email, password) => {
 };
 
 module.exports.getProfilePage = (req, res, next) => {
-  res.render("shop/profile.ejs", { user: user });
+  res.render("shop/profile.ejs", {
+    user: user,
+    profilePictureUrl: `https://api.multiavatar.com/${Date.now()}.svg`,
+  });
 };

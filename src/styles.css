@@ -60,3 +60,11 @@
 .pagebg {
   @apply h-screen w-screen random-bg transition-all bg-black;
 }
+
+.profile-label {
+  @apply text-xs text-gray-300 font-bold font-mono;
+}
+
+.profile-value {
+  @apply text-xl text-gray-50 mb-3;
+}
