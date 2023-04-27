@@ -31,6 +31,9 @@
       </form>
       <% } else { %>
       <form novalidate method="POST" action="/login" onsubmit="return validateForm()" autocomplete="off" class="flex gap-2 flex-col justify-center bg-transparent mt-10 ">
+        <% if(error) { %>
+        <h2 id="errorIdPassword" class="form-error">Incorrect email or password</h2>
+        <% } %>
         <input type="email" name="email" id="email" placeholder="Enter your email" class="form-input">
         <h2 id="errorEmail" class="form-error hidden"></h2>
         <input type="password" name="password" id="password" placeholder="Enter password" class="form-input">

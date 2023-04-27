@@ -1,6 +1,8 @@
 const userController = require("./userController");
 const getDb = require("../util/database").getDb;
 
+var error = false;
+
 // /sign-up GET
 module.exports.getSignUpPage = (req, res, next) => {
   res.render("index.ejs", { signUp: true });
@@ -8,7 +10,7 @@ module.exports.getSignUpPage = (req, res, next) => {
 
 // /
 module.exports.getLoginPage = (req, res, next) => {
-  res.render("index.ejs", { signUp: false });
+  res.render("index.ejs", { signUp: false, error: error });
 };
 
 // /sign-up POST
@@ -49,9 +51,12 @@ module.exports.login = async (req, res, next) => {
     .findOne({ email: email, password: password });
 
   if (user == null) {
+    error = true;
     res.redirect("/");
   } else {
     userController.logInUser(user.name, user.email, user.password);
+    console.log(user);
+    error = false;
     res.redirect("/shop");
   }
 };
