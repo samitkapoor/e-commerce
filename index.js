@@ -7,6 +7,8 @@ const mongoConnect = require("./util/database").mongoConnect;
 const loginRoutes = require("./routes/loginRoutes");
 // shop routes
 const shopRoutes = require("./routes/shopRoutes");
+// user routes
+const userRoutes = require("./routes/userRoutes");
 
 const app = express();
 
@@ -16,6 +18,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.use(userRoutes);
 app.use(shopRoutes);
 app.use(loginRoutes);
 

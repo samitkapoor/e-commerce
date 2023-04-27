@@ -1,5 +1,4 @@
-const express = require("express");
-
+const userController = require("./userController");
 const getDb = require("../util/database").getDb;
 
 // /sign-up GET
@@ -28,6 +27,7 @@ module.exports.signUp = async (req, res, next) => {
       email: email,
     })
     .then((response) => {
+      userController.logInUser(name, email, password);
       console.log(response);
       res.redirect("/shop");
     })
@@ -51,6 +51,7 @@ module.exports.login = async (req, res, next) => {
   if (user == null) {
     res.redirect("/");
   } else {
+    userController.logInUser(user.name, user.email, user.password);
     res.redirect("/shop");
   }
 };
