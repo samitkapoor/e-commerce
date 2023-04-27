@@ -1,6 +1,7 @@
 const getDb = require("../util/database").getDb;
 
 const Product = require("../models/product");
+const getUser = require("./userController").getUser;
 
 var products = [];
 
@@ -58,5 +59,5 @@ module.exports.getCartPage = (req, res, next) => {
 };
 
 module.exports.getWishlistPage = (req, res, next) => {
-  res.render("shop/wishlist.ejs");
+  res.render("shop/wishlist.ejs", { user: getUser() });
 };

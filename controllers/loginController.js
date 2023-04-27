@@ -18,6 +18,7 @@ module.exports.signUp = async (req, res, next) => {
   const name = req.body.name;
   const email = req.body.email;
   const password = req.body.password;
+  const wishlist = [];
 
   let db = getDb();
 
@@ -27,9 +28,10 @@ module.exports.signUp = async (req, res, next) => {
       name: name,
       password: password,
       email: email,
+      wishlist: wishlist,
     })
     .then((response) => {
-      userController.logInUser(name, email, password);
+      userController.logInUser(name, email, password, wishlist);
       console.log(response);
       res.redirect("/shop");
     })
@@ -54,7 +56,12 @@ module.exports.login = async (req, res, next) => {
     error = true;
     res.redirect("/");
   } else {
-    userController.logInUser(user.name, user.email, user.password);
+    userController.logInUser(
+      user.name,
+      user.email,
+      user.password,
+      user.wishlist
+    );
     console.log(user);
     error = false;
     res.redirect("/shop");

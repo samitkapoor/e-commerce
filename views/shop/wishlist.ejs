@@ -12,6 +12,11 @@
 <body class="pagebg">
   <div class="h-screen w-screen bg-[#000000a6] flex flex-col">
     <%- include("../components/navBar.ejs"); %>
+    <% if(user.wishlist.length === 0) { %>
+    <div class="h-full w-full flex items-center justify-center text-white text-3xl">
+      Your wishlist is empty
+    </div>
+    <% } %>
   </div>
   <script src="https://kit.fontawesome.com/885853d9e4.js" crossorigin="anonymous"></script>
 </body>
