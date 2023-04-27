@@ -1,6 +1,8 @@
 # e-commerce
 Upstore is an e-commerce website
 
+TODO: Add the facility of adding items in the wishlist and updating the values in mongodb database
+
 # Previews
 
 |Login Page|Sign Up Page|
