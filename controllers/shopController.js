@@ -52,7 +52,14 @@ module.exports.getProduct = async (req, res, next) => {
 
   const product = await fetchProduct(prodId);
 
-  res.render("shop/product.ejs", { product: product });
+  let user = await getUser();
+
+  let flag = true;
+  user.wishlist.forEach((object) => {
+    if (object.id.toString() == product.id.toString()) flag = false;
+  });
+
+  res.render("shop/product.ejs", { product: product, flag: flag });
 };
 
 module.exports.getCartPage = (req, res, next) => {

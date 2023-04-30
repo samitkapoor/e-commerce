@@ -29,8 +29,13 @@
           </button>
           <form action="/add-to-wishlist/<%= product.id %>" method="POST">
             <button class="bg-red-400 hover:bg-yellow-500 transition-all duration-[200ms] py-3 px-6 rounded-md flex items-center justify-center gap-2">
+              <% if(flag) { %>
               <i class="fa-solid fa-heart"></i>
               <h4 class="text-xs md:text-sm">Add to Wishlist</h4>
+              <% } else { %>
+              <i class="fa-solid fa-trash-can"></i>
+              <h4 class="text-xs md:text-sm">Remove from Wishlist</h4>
+              <% } %>
             </button>
           </form>
         </div>
