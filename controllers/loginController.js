@@ -30,13 +30,14 @@ module.exports.signUp = async (req, res, next) => {
       email: email,
       wishlist: wishlist,
     })
-    .then((response) => {
-      userController.logInUser(name, email, password, wishlist);
-      console.log(response);
+    .then(async (response) => {
+      const user = await db
+        .collection("users")
+        .findOne({ email: email, password: password });
+      userController.logInUser(user._id, name, email, password, wishlist);
       res.redirect("/shop");
     })
     .catch((err) => {
-      alert(console.log("Error Occured, Please Try Again"));
       res.redirect("/sign-up");
     });
 };
@@ -57,12 +58,12 @@ module.exports.login = async (req, res, next) => {
     res.redirect("/");
   } else {
     userController.logInUser(
+      user._id,
       user.name,
       user.email,
       user.password,
       user.wishlist
     );
-    console.log(user);
     error = false;
     res.redirect("/shop");
   }

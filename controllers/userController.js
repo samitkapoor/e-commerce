@@ -1,10 +1,11 @@
 const User = require("../models/user");
 
+const getDb = require("../util/database").getDb;
+
 var user = null;
 
-module.exports.logInUser = (name, email, password, wishlist) => {
-  user = new User(name, email, password, wishlist);
-  console.log(user);
+module.exports.logInUser = (id, name, email, password, wishlist) => {
+  user = new User(id, name, email, password, wishlist);
 };
 
 module.exports.getProfilePage = (req, res, next) => {
@@ -14,9 +15,25 @@ module.exports.getProfilePage = (req, res, next) => {
   });
 };
 
-module.exports.getUser = () => {
-  console.log("In UserController");
-  console.log(user);
+module.exports.getUser = async () => {
+  let db = getDb();
+  await db
+    .collection("users")
+    .findOne({ _id: user.id })
+    .then((_user) => {
+      user = new User(
+        _user._id,
+        _user.name,
+        _user.email,
+        _user.password,
+        _user.wishlist
+      );
+    })
+    .catch((err) => {
+      console.log(err);
+      throw err;
+    });
+
   if (user != null) return user;
-  else return null;
+  return null;
 };

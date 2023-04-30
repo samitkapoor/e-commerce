@@ -12,4 +12,6 @@ router.get("/cart", shopController.getCartPage);
 
 router.get("/wishlist", shopController.getWishlistPage);
 
+router.post("/add-to-wishlist/:id", shopController.addToWishlist);
+
 module.exports = router;
