@@ -14,4 +14,6 @@ router.get("/wishlist", shopController.getWishlistPage);
 
 router.post("/add-to-wishlist/:id", shopController.addToWishlist);
 
+router.post("/remove-from-wishlist/:id", shopController.removeFromWishlist);
+
 module.exports = router;

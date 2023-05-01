@@ -27,17 +27,21 @@
             <i class="fa-solid fa-cart-shopping"></i>
             <h4 class="text-xs md:text-sm">Add to Cart</h4>
           </button>
+          <% if(flag) { %>
           <form action="/add-to-wishlist/<%= product.id %>" method="POST">
-            <button class="bg-red-400 hover:bg-yellow-500 transition-all duration-[200ms] py-3 px-6 rounded-md flex items-center justify-center gap-2">
-              <% if(flag) { %>
-              <i class="fa-solid fa-heart"></i>
-              <h4 class="text-xs md:text-sm">Add to Wishlist</h4>
-              <% } else { %>
-              <i class="fa-solid fa-trash-can"></i>
-              <h4 class="text-xs md:text-sm">Remove from Wishlist</h4>
+            <% } else { %>
+            <form action="/remove-from-wishlist/<%= product.id %>" method="POST">
               <% } %>
-            </button>
-          </form>
+              <button class="bg-red-400 hover:bg-yellow-500 transition-all duration-[200ms] py-3 px-6 rounded-md flex items-center justify-center gap-2">
+                <% if(flag) { %>
+                <i class="fa-solid fa-heart"></i>
+                <h4 class="text-xs md:text-sm">Add to Wishlist</h4>
+                <% } else { %>
+                <i class="fa-solid fa-trash-can"></i>
+                <h4 class="text-xs md:text-sm">Remove from Wishlist</h4>
+                <% } %>
+              </button>
+            </form>
         </div>
         <h4 class="font-semibold text-lg mt-10">Description</h4>
         <h4 class="font-light px-10 md:px-0 text-center md:text-start">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est aliquid modi quisquam, hic iure soluta quos animi voluptatum ducimus quasi ipsam voluptas alias beatae. Hic quia cum veniam aliquid, vero ad alias, itaque temporibus ullam dolorem sed placeat harum sit. Ullam exercitationem dignissimos impedit odio nemo est quas repellendus libero?</h4>

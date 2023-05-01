@@ -72,7 +72,47 @@ module.exports.getWishlistPage = async (req, res, next) => {
 };
 
 module.exports.addToWishlist = async (req, res, next) => {
-  console.log("new request");
+  prodId = req.url.split("/")[2];
+
+  var product = await fetchProduct(prodId);
+  product = {
+    id: product.id,
+    companyName: product.companyName,
+    name: product.name,
+    imageUrl: product.imageUrl,
+    price: product.price,
+  };
+
+  let user = await getUser();
+
+  let wishlist = [];
+
+  let db = await getDb();
+
+  await db
+    .collection("users")
+    .findOne({ _id: user.id })
+    .then((user) => (wishlist = user.wishlist));
+
+  var flag = true;
+
+  wishlist.forEach((obj) => {
+    if (obj.id.toString() == product.id.toString()) flag = false;
+  });
+
+  if (flag) {
+    wishlist.push(product);
+    await db
+      .collection("users")
+      .updateOne({ _id: user.id }, { $set: { wishlist: wishlist } })
+      .then((response) => console.log(response))
+      .catch((err) => console.log(err));
+  }
+
+  res.redirect("/shop");
+};
+
+module.exports.removeFromWishlist = async (req, res, next) => {
   prodId = req.url.split("/")[2];
 
   var product = await fetchProduct(prodId);
@@ -103,25 +143,24 @@ module.exports.addToWishlist = async (req, res, next) => {
   console.log("wishlist");
   console.log(wishlist);
 
+  var idx = 0;
   var flag = true;
 
   console.log(product.id.toString());
   wishlist.forEach((obj) => {
     console.log(obj.id);
+    if (flag) idx++;
     if (obj.id.toString() == product.id.toString()) flag = false;
   });
-  console.log(flag);
 
-  if (flag) {
-    wishlist.push(product);
-    console.log("new wishlist");
-    console.log(wishlist);
-    await db
-      .collection("users")
-      .updateOne({ _id: user.id }, { $set: { wishlist: wishlist } })
-      .then((response) => console.log(response))
-      .catch((err) => console.log(err));
-  }
+  wishlist.splice(idx - 1, 1);
+  console.log("new wishlist");
+  console.log(wishlist);
+  await db
+    .collection("users")
+    .updateOne({ _id: user.id }, { $set: { wishlist: wishlist } })
+    .then((response) => console.log(response))
+    .catch((err) => console.log(err));
 
   res.redirect("/shop");
 };
