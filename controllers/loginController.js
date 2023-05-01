@@ -19,6 +19,7 @@ module.exports.signUp = async (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
   const wishlist = [];
+  const cart = [];
 
   let db = getDb();
 
@@ -29,12 +30,13 @@ module.exports.signUp = async (req, res, next) => {
       password: password,
       email: email,
       wishlist: wishlist,
+      cart: cart,
     })
     .then(async (response) => {
       const user = await db
         .collection("users")
         .findOne({ email: email, password: password });
-      userController.logInUser(user._id, name, email, password, wishlist);
+      userController.logInUser(user._id, name, email, password, wishlist, cart);
       res.redirect("/shop");
     })
     .catch((err) => {
@@ -62,7 +64,8 @@ module.exports.login = async (req, res, next) => {
       user.name,
       user.email,
       user.password,
-      user.wishlist
+      user.wishlist,
+      user.cart
     );
     error = false;
     res.redirect("/shop");

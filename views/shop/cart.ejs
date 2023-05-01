@@ -12,6 +12,30 @@
 <body class="pagebg">
   <div class="h-screen w-screen bg-[#000000a6] flex flex-col">
     <%- include("../components/navBar.ejs"); %>
+    <% console.log(user); %>
+    <% if(user.cart == undefined) { %>
+    <div class="h-full w-full flex items-center justify-center text-white text-3xl">
+      Your cart is empty
+    </div>
+    <% } else { %>
+    <div class="w-full flex gap-4 flex-wrap justify-center md:justify-start px-4 py-5 md:px-20 md:py-10">
+      <% user.cart.forEach(product => { %>
+      <a href="/product/<%= product.id %>">
+        <!-- each product -->
+        <div class="card w-32 md:w-48 flex flex-col bg-gray-200 cursor-pointer rounded-md overflow-hidden">
+          <!-- the image of the product -->
+          <img class="h-32 w-32 md:h-48 md:w-48 object-contain bg-white transition-all" src=<%= product.imageUrl%> alt="">
+          <!-- the name and price of the product -->
+          <div class="flex flex-col whitespace-nowrap p-2">
+            <h4 class="text-sm font-bold overflow-hidden"><%=product.companyName%></h4>
+            <h4 class="text-xs overflow-hidden"><%=product.name%></h4>
+            <h4 class="text-sm font-bold text-right price-text transition-all">&#8377;<%=product.price%></h4>
+          </div>
+        </div>
+      </a>
+      <% }); %>
+    </div>
+    <% } %>
   </div>
   <script src="https://kit.fontawesome.com/885853d9e4.js" crossorigin="anonymous"></script>
 

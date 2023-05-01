@@ -4,8 +4,8 @@ const getDb = require("../util/database").getDb;
 
 var user = null;
 
-module.exports.logInUser = (id, name, email, password, wishlist) => {
-  user = new User(id, name, email, password, wishlist);
+module.exports.logInUser = (id, name, email, password, wishlist, cart) => {
+  user = new User(id, name, email, password, wishlist, cart);
 };
 
 module.exports.getProfilePage = (req, res, next) => {

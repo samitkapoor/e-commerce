@@ -62,8 +62,9 @@ module.exports.getProduct = async (req, res, next) => {
   res.render("shop/product.ejs", { product: product, flag: flag });
 };
 
-module.exports.getCartPage = (req, res, next) => {
-  res.render("shop/cart.ejs");
+module.exports.getCartPage = async (req, res, next) => {
+  let user = await getUser();
+  res.render("shop/cart.ejs", { user: user });
 };
 
 module.exports.getWishlistPage = async (req, res, next) => {
