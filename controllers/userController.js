@@ -26,7 +26,8 @@ module.exports.getUser = async () => {
         _user.name,
         _user.email,
         _user.password,
-        _user.wishlist
+        _user.wishlist,
+        _user.cart
       );
     })
     .catch((err) => {

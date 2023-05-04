@@ -23,17 +23,24 @@
         <h1 class="font-bold text-lg md:text-3xl">&#8377;<%= product.price %></h1>
         <!-- add to wishlist, add to cart buttons -->
         <div class="mt-5 flex gap-2 items-center justify-center">
-          <button class="bg-gray-400 hover:bg-green-500 transition-all duration-[200ms] py-3 px-6 rounded-md flex items-center justify-center gap-2">
-            <i class="fa-solid fa-cart-shopping"></i>
-            <h4 class="text-xs md:text-sm">Add to Cart</h4>
-          </button>
-          <% if(flag) { %>
+          <form action="/add-to-cart/<%= product.id %>" method="POST">
+            <button class="bg-gray-400 hover:bg-green-500 transition-all duration-[200ms] py-3 px-6 rounded-md flex items-center justify-center gap-2">
+              <% if(isNotCart) { %>
+              <i class="fa-solid fa-cart-shopping"></i>
+              <h4 class="text-xs md:text-sm">Add to Cart</h4>
+              <% } else { %>
+              <i class="fa-solid fa-trash-can"></i>
+              <h4 class="text-xs md:text-sm">Remove from Cart</h4>
+              <% } %>
+            </button>
+          </form>
+          <% if(isNotWishlisted) { %>
           <form action="/add-to-wishlist/<%= product.id %>" method="POST">
             <% } else { %>
             <form action="/remove-from-wishlist/<%= product.id %>" method="POST">
               <% } %>
               <button class="bg-red-400 hover:bg-yellow-500 transition-all duration-[200ms] py-3 px-6 rounded-md flex items-center justify-center gap-2">
-                <% if(flag) { %>
+                <% if(isNotWishlisted) { %>
                 <i class="fa-solid fa-heart"></i>
                 <h4 class="text-xs md:text-sm">Add to Wishlist</h4>
                 <% } else { %>

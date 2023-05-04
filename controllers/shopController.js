@@ -54,16 +54,25 @@ module.exports.getProduct = async (req, res, next) => {
 
   let user = await getUser();
 
-  let flag = true;
+  let isNotWishlisted = true;
+  let isNotCart = true;
   user.wishlist.forEach((object) => {
-    if (object.id.toString() == product.id.toString()) flag = false;
+    if (object.id.toString() == product.id.toString()) isNotWishlisted = false;
+  });
+  user.cart.forEach((object) => {
+    if (object.id.toString() == product.id.toString()) isNotCart = false;
   });
 
-  res.render("shop/product.ejs", { product: product, flag: flag });
+  res.render("shop/product.ejs", {
+    product: product,
+    isNotWishlisted: isNotWishlisted,
+    isNotCart: isNotCart,
+  });
 };
 
 module.exports.getCartPage = async (req, res, next) => {
   let user = await getUser();
+  console.log(user);
   res.render("shop/cart.ejs", { user: user });
 };
 
@@ -117,7 +126,6 @@ module.exports.removeFromWishlist = async (req, res, next) => {
   prodId = req.url.split("/")[2];
 
   var product = await fetchProduct(prodId);
-  console.log("product");
   product = {
     id: product.id,
     companyName: product.companyName,
@@ -125,12 +133,8 @@ module.exports.removeFromWishlist = async (req, res, next) => {
     imageUrl: product.imageUrl,
     price: product.price,
   };
-  console.log(product);
 
   let user = await getUser();
-
-  console.log("user");
-  console.log(user);
 
   let wishlist = [];
 
@@ -141,27 +145,62 @@ module.exports.removeFromWishlist = async (req, res, next) => {
     .findOne({ _id: user.id })
     .then((user) => (wishlist = user.wishlist));
 
-  console.log("wishlist");
-  console.log(wishlist);
-
   var idx = 0;
   var flag = true;
 
-  console.log(product.id.toString());
   wishlist.forEach((obj) => {
-    console.log(obj.id);
     if (flag) idx++;
     if (obj.id.toString() == product.id.toString()) flag = false;
   });
 
   wishlist.splice(idx - 1, 1);
-  console.log("new wishlist");
-  console.log(wishlist);
   await db
     .collection("users")
     .updateOne({ _id: user.id }, { $set: { wishlist: wishlist } })
     .then((response) => console.log(response))
     .catch((err) => console.log(err));
+
+  res.redirect("/shop");
+};
+
+module.exports.addToCart = async (req, res, next) => {
+  prodId = req.url.split("/")[2];
+
+  var product = await fetchProduct(prodId);
+  product = {
+    id: product.id,
+    companyName: product.companyName,
+    name: product.name,
+    imageUrl: product.imageUrl,
+    price: product.price,
+    quantity: 1,
+  };
+
+  let user = await getUser();
+
+  let cart = [];
+
+  let db = await getDb();
+
+  await db
+    .collection("users")
+    .findOne({ _id: user.id })
+    .then((user) => (cart = user.cart));
+
+  var flag = true;
+
+  cart.forEach((obj) => {
+    if (obj.id.toString() == product.id.toString()) flag = false;
+  });
+
+  if (flag) {
+    cart.push(product);
+    await db
+      .collection("users")
+      .updateOne({ _id: user.id }, { $set: { cart: cart } })
+      .then((response) => console.log(response))
+      .catch((err) => console.log(err));
+  }
 
   res.redirect("/shop");
 };
