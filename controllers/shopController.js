@@ -204,3 +204,44 @@ module.exports.addToCart = async (req, res, next) => {
 
   res.redirect("/shop");
 };
+
+module.exports.removeFromCart = async (req, res, next) => {
+  prodId = req.url.split("/")[2];
+
+  var product = await fetchProduct(prodId);
+  product = {
+    id: product.id,
+    companyName: product.companyName,
+    name: product.name,
+    imageUrl: product.imageUrl,
+    price: product.price,
+  };
+
+  let user = await getUser();
+
+  let cart = [];
+
+  let db = await getDb();
+
+  await db
+    .collection("users")
+    .findOne({ _id: user.id })
+    .then((user) => (cart = user.cart));
+
+  var idx = 0;
+  var flag = true;
+
+  cart.forEach((obj) => {
+    if (flag) idx++;
+    if (obj.id.toString() == product.id.toString()) flag = false;
+  });
+
+  cart.splice(idx - 1, 1);
+  await db
+    .collection("users")
+    .updateOne({ _id: user.id }, { $set: { cart: cart } })
+    .then((response) => console.log(response))
+    .catch((err) => console.log(err));
+
+  res.redirect("/shop");
+};

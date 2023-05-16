@@ -18,4 +18,6 @@ router.post("/remove-from-wishlist/:id", shopController.removeFromWishlist);
 
 router.post("/add-to-cart/:id", shopController.addToCart);
 
+router.post("/remove-from-cart/:id", shopController.removeFromCart);
+
 module.exports = router;

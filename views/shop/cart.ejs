@@ -13,7 +13,7 @@
   <div class="h-screen w-screen bg-[#000000a6] flex flex-col">
     <%- include("../components/navBar.ejs"); %>
     <% console.log(user); %>
-    <% if(user.cart == undefined) { %>
+    <% if(user.cart.length == 0) { %>
     <div class="h-full w-full flex items-center justify-center text-white text-3xl">
       Your cart is empty
     </div>
