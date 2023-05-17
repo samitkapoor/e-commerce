@@ -4,13 +4,21 @@ const getDb = require("../util/database").getDb;
 var error = false;
 
 // /sign-up GET
-module.exports.getSignUpPage = (req, res, next) => {
-  res.render("index.ejs", { signUp: true });
+module.exports.getSignUpPage = async (req, res, next) => {
+  if ((await userController.getUser()) != null) {
+    res.redirect("/shop");
+  } else {
+    res.render("index.ejs", { signUp: true });
+  }
 };
 
 // /
-module.exports.getLoginPage = (req, res, next) => {
-  res.render("index.ejs", { signUp: false, error: error });
+module.exports.getLoginPage = async (req, res, next) => {
+  if ((await userController.getUser()) != null) {
+    res.redirect("/shop");
+  } else {
+    res.render("index.ejs", { signUp: false, error: error });
+  }
 };
 
 // /sign-up POST

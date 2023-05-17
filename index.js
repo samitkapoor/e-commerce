@@ -9,6 +9,8 @@ const loginRoutes = require("./routes/loginRoutes");
 const shopRoutes = require("./routes/shopRoutes");
 // user routes
 const userRoutes = require("./routes/userRoutes");
+// user controller
+const userController = require("./controllers/userController");
 
 const app = express();
 
@@ -18,9 +20,18 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.use(loginRoutes);
+
+app.use("/", async (req, res, next) => {
+  if ((await userController.getUser()) == null) {
+    res.redirect("/");
+  } else {
+    next();
+  }
+});
+
 app.use(userRoutes);
 app.use(shopRoutes);
-app.use(loginRoutes);
 
 const PORT = 3000 || process.env.PORT;
 

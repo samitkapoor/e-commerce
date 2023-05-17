@@ -16,6 +16,9 @@ module.exports.getProfilePage = (req, res, next) => {
 };
 
 module.exports.getUser = async () => {
+  if (user == null) {
+    return null;
+  }
   let db = getDb();
   await db
     .collection("users")
