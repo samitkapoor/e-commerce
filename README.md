@@ -9,6 +9,15 @@ TODO: Add the facility of adding items in the wishlist and updating the values i
 |:--------:|:----------:|
 |![image](https://user-images.githubusercontent.com/77121931/233476357-ca212757-e56f-421e-a21e-8ccb52b9975c.png)|![image](https://user-images.githubusercontent.com/77121931/233476961-7cfb57cf-203d-4bd0-b5cc-df1eafbfd269.png)
 
+|Products | Product |
+|:-------:|:-------:|
+![image](https://github.com/samitkapoor/e-commerce/assets/77121931/12eed5dc-4b25-4ba7-b7ab-c9fb67b28ac8)|![image](https://github.com/samitkapoor/e-commerce/assets/77121931/8d8c4084-80b0-4654-a968-036e10ca5b48)
+
+|Profile|
+|:-----:|
+![image](https://github.com/samitkapoor/e-commerce/assets/77121931/d05e875f-bbbe-417f-a32c-7dfd3b4559e8)
+
+
 # Video
 https://github.com/samitkapoor/e-commerce/assets/77121931/7799b2b6-4c1e-47ee-83f7-f8725239abfd
 
