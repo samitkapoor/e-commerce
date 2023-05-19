@@ -18,7 +18,7 @@ Upstore is an e-commerce website
 
 
 # Video
-https://github.com/samitkapoor/e-commerce/assets/77121931/7799b2b6-4c1e-47ee-83f7-f8725239abfd
+https://github.com/samitkapoor/e-commerce/assets/77121931/56795133-0754-4bfc-8b9b-0997d9c761d9
 
 ## Follow the steps below to run this project
 - Make sure you have node.js and related programs installed on your computer.
