@@ -9,11 +9,12 @@ Upstore is an e-commerce website
 
 |Products | Product |
 |:-------:|:-------:|
-![image](https://github.com/samitkapoor/e-commerce/assets/77121931/12eed5dc-4b25-4ba7-b7ab-c9fb67b28ac8)|![image](https://github.com/samitkapoor/e-commerce/assets/77121931/8d8c4084-80b0-4654-a968-036e10ca5b48)
+|![image](https://github.com/samitkapoor/e-commerce/assets/77121931/1253db8b-dba8-47e2-ad7d-ee82b64edab6)|![image](https://github.com/samitkapoor/e-commerce/assets/77121931/06ad8579-dbe1-4187-9e82-03915f3b9c04)
+
 
 |Profile|
 |:-----:|
-![image](https://github.com/samitkapoor/e-commerce/assets/77121931/d05e875f-bbbe-417f-a32c-7dfd3b4559e8)
+![image](https://github.com/samitkapoor/e-commerce/assets/77121931/7cf0da58-42cf-48f3-b7fc-2dcff943a066)
 
 
 # Video
