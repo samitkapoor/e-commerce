@@ -12,12 +12,19 @@
 
 <body class="pagebg overflow-hidden">
   <!-- the content on the screen and also to dim the background image -->
-  <div class="h-screen w-screen">
-    <div class="h-screen w-screen bg-[#000000a6] flex flex-col md:flex-row overflow-y-scroll scroll-bar">
-      <div class="h-[300px] mt-10 md:mt-0 md:h-screen md:w-[800px] flex items-center justify-center">
+  <div class="h-screen w-screen bg-[#000000a6]">
+    <div class="flex w-screen h-16 bg-transparent pl-20 pt-5">
+      <a href="/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="white" class="bi bi-chevron-left hover:to-black" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 0 1 0 1.414L9.414 10l3.293 3.293a1 1 0 0 1-1.414 1.414l-4-4a1 1 0 0 1 0-1.414l4-4a1 1 0 0 1 1.414 0Z" />
+        </svg>
+      </a>
+    </div>
+    <div class="h-screen w-screen bg-transparent flex flex-col md:flex-row overflow-y-scroll scroll-bar">
+      <div class="h-[300px] pt-36 md:mt-0 md:h-screen md:w-[800px] flex  justify-center">
         <img class="h-[250px] max-w-[350px] md:hover:h-[400px] border-[6px] md:hover:border-0 md:border-black object-contain lg:-rotate-45 rounded-lg overflow-hidden lg:hover:rotate-0 transition-all duration-[150ms] cursor-pointer" src="<%= product.imageUrl %>" alt="">
       </div>
-      <div class="mt-10 md:mt-0 md:h-screen w-full flex flex-col items-center justify-center md:items-start md:justify-center text-white box-border pr-0 md:pr-24 lg:pr-36 cursor-default">
+      <div class="pt-28 md:mt-0 md:h-screen w-full flex flex-col md:items-start text-white box-border pr-0 md:pr-24 lg:pr-36 cursor-default">
         <h4><%= product.companyName %></h4>
         <h1 class="font-bold text-2xl md:text-5xl md:text-start"><%= product.name %></h1>
         <h1 class="font-bold text-lg md:text-3xl">&#8377;<%= product.price %></h1>
