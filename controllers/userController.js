@@ -1,6 +1,7 @@
-const User = require("../models/user");
+const User = require('../models/user');
+const userController = require('./userController');
 
-const getDb = require("../util/database").getDb;
+const getDb = require('../util/database').getDb;
 
 var user = null;
 
@@ -8,8 +9,13 @@ module.exports.logInUser = (id, name, email, password, wishlist, cart) => {
   user = new User(id, name, email, password, wishlist, cart);
 };
 
+module.exports.logOutUser = () => {
+  user = null;
+};
+
 module.exports.getProfilePage = (req, res, next) => {
-  res.render("shop/profile.ejs", {
+  res.render('shop/profile.ejs', {
+    res: res.redirect,
     user: user,
     profilePictureUrl: `https://api.multiavatar.com/${Date.now()}.svg`,
   });
@@ -21,7 +27,7 @@ module.exports.getUser = async () => {
   }
   let db = getDb();
   await db
-    .collection("users")
+    .collection('users')
     .findOne({ _id: user.id })
     .then((_user) => {
       user = new User(

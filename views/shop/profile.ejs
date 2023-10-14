@@ -2,11 +2,11 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Profile</title>
-  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./styles.css" />
 </head>
 
 <body class="pagebg">
@@ -19,11 +19,18 @@
       </div>
       <div class="col-span-1">
         <h4 class="mt-4 md:mt-16 profile-label">Name:</h4>
-        <h3 class="profile-value"><%= user.name  %></h3>
+        <h3 class="profile-value"><%= user.name %></h3>
         <h4 class="profile-label">Email:</h4>
-        <h3 class="profile-value"><%= user.email  %></h3>
+        <h3 class="profile-value"><%= user.email %></h3>
         <h4 class="profile-label">Address:</h4>
-        <h3 class="profile-value">4297 Coal Street Houtzdale<br>Pennsylvania, 16651<br>USA</h3>
+        <h3 class="profile-value">
+          4297 Coal Street Houtzdale<br />Pennsylvania, 16651<br />USA
+        </h3>
+        <a href="/logout">
+          <button class="bg-red-500 px-10 py-2 rounded-xl text-gray-50 font-semibold">
+            Log out
+          </button>
+        </a>
       </div>
     </div>
   </div>

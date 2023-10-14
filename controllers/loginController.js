@@ -1,24 +1,30 @@
-const userController = require("./userController");
-const getDb = require("../util/database").getDb;
+const userController = require('./userController');
+const getDb = require('../util/database').getDb;
 
 var error = false;
 
 // /sign-up GET
 module.exports.getSignUpPage = async (req, res, next) => {
   if ((await userController.getUser()) != null) {
-    res.redirect("/shop");
+    res.redirect('/shop');
   } else {
-    res.render("index.ejs", { signUp: true });
+    res.render('index.ejs', { signUp: true });
   }
 };
 
 // /
 module.exports.getLoginPage = async (req, res, next) => {
   if ((await userController.getUser()) != null) {
-    res.redirect("/shop");
+    res.redirect('/shop');
   } else {
-    res.render("index.ejs", { signUp: false, error: error });
+    res.render('index.ejs', { signUp: false, error: error });
   }
+};
+
+module.exports.logOutUser = async (req, res, next) => {
+  userController.logOutUser();
+
+  res.redirect('/');
 };
 
 // /sign-up POST
@@ -32,7 +38,7 @@ module.exports.signUp = async (req, res, next) => {
   let db = getDb();
 
   await db
-    .collection("users")
+    .collection('users')
     .insertOne({
       name: name,
       password: password,
@@ -42,13 +48,13 @@ module.exports.signUp = async (req, res, next) => {
     })
     .then(async (response) => {
       const user = await db
-        .collection("users")
+        .collection('users')
         .findOne({ email: email, password: password });
       userController.logInUser(user._id, name, email, password, wishlist, cart);
-      res.redirect("/shop");
+      res.redirect('/shop');
     })
     .catch((err) => {
-      res.redirect("/sign-up");
+      res.redirect('/sign-up');
     });
 };
 
@@ -60,12 +66,12 @@ module.exports.login = async (req, res, next) => {
   let db = getDb();
 
   const user = await db
-    .collection("users")
+    .collection('users')
     .findOne({ email: email, password: password });
 
   if (user == null) {
     error = true;
-    res.redirect("/");
+    res.redirect('/');
   } else {
     userController.logInUser(
       user._id,
@@ -76,6 +82,6 @@ module.exports.login = async (req, res, next) => {
       user.cart
     );
     error = false;
-    res.redirect("/shop");
+    res.redirect('/shop');
   }
 };
